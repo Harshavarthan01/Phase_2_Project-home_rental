@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg navbar-dark p-0" style="position: fixed;
+z-index: 5;
+width: 100%;background: white;">
+    <div class="d-flex w-100 m-0 p-0" style="justify-content: space-between">
+      <!-- Logo -->
+      <a class="navbar-brand m-0 text-center" href="#">
+        <img
+          width="77px"
+          src="/assets/images/logo.png"
+          class="h-8 logo"
+          alt="..."
+        />
+        <span style="color: black">Rent Villa</span>
+      </a>
+      <!-- Navbar toggle -->
+      <i
+        class="bi bi-list"
+        style="color: black; font-size: 41px;
+        align-items: center;"
+        (click)="menuclick()"
+      ></i>
+
+      <div
+        class="collapse navbar-collapse"
+        id="navbarCollapse"
+        style="
+          padding-left: 10px;
+          padding-right: 10px;
+          border-bottom: 1px solid #c7c5c5;
+        "
+      >
+        <div
+          style="
+            display: flex;
+            margin-left: auto;
+            justify-content: space-evenly;
+            margin-bottom: 1rem;
+          "
+        >
+          <div class="navbar-nav ms-lg-4">
+            <button class="btn btn-light" (click)="Openlogin()" >Login</button>
+          </div>
+          <div class="navbar-nav ms-lg-4">
+            <button class="btn btn-light" (click)="Openregister()">Register</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
