@@ -1,0 +1,143 @@
+.login {
+  width: 54%;
+  background: white;
+  height: 500px;
+  z-index: 5;
+  display: flex;
+  animation: zoomin 0.2s ease-in-out forwards;
+}
+
+.login-bg {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: rgb(221, 220, 220); */
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 5;
+  font-family: system-ui;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+h1 {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.input-box {
+  margin: 0px 5px;
+  padding: 7px 8px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  background: #f7f5f5;
+  outline: none;
+  color: #605d5d;
+  font-size: medium;
+}
+
+.inner-login-right {
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+}
+
+.forgot-password {
+  opacity: 0.9;
+  margin-bottom: 3px;
+  color: #223db5;
+  cursor: pointer;
+}
+
+.forgot-password:hover {
+  color: #0d2fc7;
+}
+
+.login-btn {
+  margin-top: 25px;
+  border: 0;
+  background: #0e2799;
+  color: white;
+  font-size: x-large;
+  padding: 9px 7px;
+  border-radius: 6px;
+}
+
+.login-btn:hover {
+  background: #223db5;
+}
+
+.left-portion {
+  width: 50%;
+}
+.right-portion {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 57px 27px;
+}
+
+.form-label{
+  opacity: 0.9;
+}
+
+
+@media only screen and (max-width: 700px) {
+  .left-portion {
+    display: none;
+  }
+  .right-portion {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+    .login {
+      width: 90%;
+    }
+  }
+
+  @media only screen and (max-width: 1150px) {
+    .login {
+      width: 70%;
+    }
+  }
+
+  @media only screen and (max-width: 870px) {
+    .login {
+      width: 80%;
+    }
+  }
+
+  /* #ticketslist {
+    animation: zoomin 0.2s ease-in-out forwards;
+  } */
+  
+  @keyframes zoomin {
+    0% {
+      transform: scale(0.1, 0.1);
+    }
+    /* 10% {
+      transform: scale(0.3, 0.3);
+    } */
+    /* 20% {
+      transform: scale(0.5, 0.5);
+    } */
+    40% {
+      transform: scale(0.4, 0.4);
+    }
+    /* 70% {
+      transform: scale(0.8, 0.8);
+    } */
+    70% {
+      transform: scale(0.9, 0.9);
+    }
+    100% {
+      transform: scale(1, 1);
+    }
+  }
+  

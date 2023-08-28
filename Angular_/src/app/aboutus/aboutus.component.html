@@ -1,0 +1,38 @@
+<app-login *ngIf="this.tempservice.showlogin"></app-login>
+<app-register *ngIf="this.tempservice.showregister"></app-register>
+<app-togglemenu *ngIf="this.tempservice.showmenu"></app-togglemenu>
+<div class="d-flex flex-column" style="font-family: system-ui">
+  <app-header></app-header>
+  <div class="row flex-nowrap" style="margin: 0">
+    <app-leftpanel
+      *ngIf="this.tempservice.width > 992"
+      style="width: 19.5%; margin-top: 5%; position: fixed; padding: 0"
+    ></app-leftpanel>
+
+    <div class="right-area">
+      <div><h1 style="padding-left: 10px; margin-top: 100px">About Us</h1></div>
+      <div class="container">
+        <h2>Our Mission</h2>
+        <p>
+          Our mission is to provide contact information of house owners to our
+          tenants.
+        </p>
+
+        <h2>Meet the Team</h2>
+        <p>
+          We have a dedicated team of professionals who are passionate about
+          what they do...
+        </p>
+
+        <h2>Contact Us</h2>
+        <p>If you have any questions or inquiries, feel free to contact us.</p>
+        <p>Phone No : +91 7868916608 , +91 7868896109</p>
+        <p>
+          Email Id : <a href="aboutus">ramkumar.a@payoda.com</a> ,
+          <a href="aboutus">harshavarthan.s@payoda.com</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer *ngIf="this.tempservice.width < 431"></app-footer>

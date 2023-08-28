@@ -1,0 +1,128 @@
+@media only screen and (min-width: 992px) {
+  .navbar-brand {
+    width: 296px;
+    background: #eceef5;
+  }
+  .right-area {
+    width: 78%;
+  }
+
+  .bi-list {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .leftarea {
+    display: none;
+  }
+  nav {
+    border-bottom: 1px solid #c7c5c5;
+    background: #eceef5;
+  }
+  .btnn {
+    display: none;
+  }
+  .navbar-brand {
+    border-bottom: 1px solid #c7c5c5;
+    box-shadow: 0px 0px 0px #d7d1d1;
+  }
+  .bi-list {
+    display: flex;
+  }
+}
+
+/* .bi-list {
+    display: none;
+  } */
+
+nav {
+  /* display: flex;
+        padding: 20px 5px;
+        justify-content: space-between; */
+  /* border-bottom: 1px solid #c7c5c5; */
+  flex-wrap: wrap;
+  border-bottom: 1px solid #c7c5c5;
+}
+
+.filters {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* column-gap: 26px; */
+  font-size: large;
+  font-weight: 500;
+}
+
+/* :is(.filter-1, .filter-2, .filter-3) {
+  /* background: grey; */
+/* padding: 22px; */
+/* } * */
+
+/* :is(.filter-1, .filter-2, .filter-3):hover {
+  background: grey;
+  color: white;
+  cursor: pointer;
+
+  /* border-bottom: solid 3px #019fb6;  */
+/* }  */
+
+.filter-1:hover .drop-show-1 {
+  display: flex;
+}
+
+/* .filter-1 span:hover { border:solid 3px #019fb6; } */
+
+.filters span {
+  display: inline-block;
+  margin: 0;
+  text-transform: uppercase;
+}
+.filters span:after {
+  display: block;
+  content: "";
+  margin-top: 4px;
+  /* border-top: solid 3px #019fb6;   */
+  border-bottom: solid 3px #cedbde;
+  color: white;
+  transform: scaleX(0);
+  transition: transform 250ms ease-in-out;
+}
+.filters span:hover:after {
+  transform: scaleX(1);
+}
+h1.fromRight:after {
+  transform-origin: 100% 50%;
+}
+h1.fromLeft:after {
+  transform-origin: 0% 50%;
+}
+
+.drop-show-1 {
+  display: none;
+    flex-direction: column;
+    color: black;
+    position: absolute;
+    z-index: 5;
+    justify-content: space-evenly;
+    background: #f7f7f7;
+    padding: 10px;
+    line-height: 30px;
+    /* border-bottom-left-radius: 8px; */
+    /* border-bottom-right-radius: 8px; */
+    border: 1px solid grey;
+    /* border-top: 0; */
+    font-size: smaller;
+    row-gap: 10px;
+    top: 70%;
+    border-radius: 8px;
+}
+.drop-show-1:hover {
+  display: flex;
+}
+
+@media only screen and (max-width: 992px) {
+  .filters {
+    display: none;
+  }
+}

@@ -1,0 +1,27 @@
+/* @media only screen and (max-width: 430px) {
+    footer {
+        display: flex;
+      }
+} */
+
+footer {
+    width: 100%;
+    display: none;
+    position: fixed;
+    flex-direction: row;
+    z-index: 2;
+    vertical-align: baseline;
+    height: 56px;
+    background: #e4dfdf;
+    align-items: center;
+    justify-content: space-evenly;
+    bottom: 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  @media only screen and (max-width: 992px) {
+    footer{
+      display: flex;
+    }
+  }

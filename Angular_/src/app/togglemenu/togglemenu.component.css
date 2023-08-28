@@ -1,0 +1,83 @@
+/* .toggle-bg {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 5;
+  font-family: system-ui;
+  background: rgba(0, 0, 0, 0.4);
+} */
+
+.leftarea {
+  position: relative;
+  background: #eceef5;
+  width: 231px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 0px 6px #d7d1d1;
+  z-index: 5;
+  animation: Slidein 0.3s ease-in;
+}
+.leftarea1 {
+  position: relative;
+  background: #eceef5;
+  width: 231px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 0px 6px #d7d1d1;
+  z-index: 5;
+  animation: Slideout 0.3s ease-in;
+}
+.leftarea-options {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding: 35px;
+  flex-direction: column;
+  line-height: 55px;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  letter-spacing: 1px;
+  /* border-bottom: 1px solid grey; */
+  cursor: pointer;
+  padding-left: 18%;
+  border-radius: 20px;
+}
+
+.icons:hover{
+  background: #c7c5c5;
+}
+
+.toggle-bg {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  overflow: hidden;
+}
+
+@keyframes Slidein {
+  0% {
+    left: 300px;
+  }
+  100% {
+    left: 0;
+  }
+}
+@keyframes Slideout {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 300px;
+  }
+}

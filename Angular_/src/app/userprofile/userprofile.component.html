@@ -1,0 +1,233 @@
+<app-login *ngIf="this.tempservice.showlogin"></app-login>
+<app-register *ngIf="this.tempservice.showregister"></app-register>
+<app-togglemenu *ngIf="this.tempservice.showmenu"></app-togglemenu>
+<app-becomeownerpopup
+  *ngIf="this.tempservice.ownerpopup"
+></app-becomeownerpopup>
+<div class="d-flex flex-column" style="font-family: system-ui">
+  <app-header></app-header>
+  <div class="row flex-nowrap" style="margin: 73px 0 0 0">
+    <app-leftpanel
+      *ngIf="this.tempservice.width > 992"
+      style="width: 19.5%; position: fixed; padding: 0"
+    ></app-leftpanel>
+
+    <div class="right-area" *ngIf="this.userservice.isloggedIn()">
+      <div class="user-profile mt-4">
+        <div class="d-flex justify-content-center">
+          <div class="d-flex">
+            <img
+              src="assets/images/user.png"
+              alt="tag"
+              class="d-block w-80 img-fluid"
+              style="border-radius: 10px"
+            />
+          </div>
+        </div>
+        <form
+          [formGroup]="modifyForm"
+          #form="ngForm"
+          (ngSubmit)="onClickLogin()"
+          class="right-portion"
+        >
+          <div class="row">
+            <div class="col mb-2">
+              <label for="username" class="form-label mt-2"
+                >Username<span style="color: red">*</span></label
+              >
+              <div class="input-group input-group-sm has-validation">
+                <input
+                  id="username"
+                  name="username"
+                  placeholder="Enter username"
+                  formControlName="username"
+                  required
+                  [readOnly]="access"
+                  minlength="1"
+                  class="form-control form-control-sm input-box"
+                  [class.is-invalid]="
+                    username.invalid && (username.dirty || username.touched)
+                  "
+                />
+
+                <div
+                  *ngIf="
+                    username.invalid && (username.dirty || username.touched)
+                  "
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="username.errors?.['required']">
+                    This field is required.
+                  </div>
+                  <div *ngIf="username.errors?.['minlength']">
+                    This field must have at least 1 characters.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col mb-2">
+              <label for="email" class="form-label mt-4"
+                >Email<span style="color: red">*</span></label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                formControlName="email"
+                placeholder="example@gmail.com"
+                required
+                [readOnly]="access"
+                minlength="1"
+                maxlength="250"
+                class="form-control form-control-sm input-box"
+                [class.is-invalid]="
+                  email.invalid && (email.dirty || email.touched)
+                "
+              />
+              <div
+                *ngIf="email.invalid && (email.dirty || email.touched)"
+                class="invalid-feedback"
+              >
+                <div *ngIf="email.errors?.['required']">
+                  This field is required.
+                </div>
+                <div *ngIf="email.errors?.['minlength']">
+                  This field must have at least 1 character.
+                </div>
+                <div *ngIf="email.errors?.['maxlength']">
+                  This field must have at most 250 characters.
+                </div>
+                <div
+                  *ngIf="!email.errors?.['required'] && !email.errors?.['minlength'] && !email.errors?.['maxlength'] && email.errors?.['emailValidator']"
+                >
+                  Invalid email format.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col mb-2">
+              <label for="phone" class="form-label mt-2"
+                >Phone<span style="color: red">*</span></label
+              >
+              <div class="input-group input-group-sm has-validation">
+                <input
+                  id="phone"
+                  name="phone"
+                  placeholder="Enter phone"
+                  formControlName="phone"
+                  required
+                  [readOnly]="access"
+                  minlength="10"
+                  maxlength="10"
+                  class="form-control form-control-sm input-box"
+                  [class.is-invalid]="
+                    phone.invalid && (phone.dirty || phone.touched)
+                  "
+                />
+
+                <div
+                  *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="phone.errors?.['required']">
+                    This field is required.
+                  </div>
+                  <div *ngIf="phone.errors?.['minlength']">
+                    This field must have 10 characters.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col mb-2">
+              <label for="password" class="form-label mt-2"
+                >Userrole<span style="color: red">*</span></label
+              >
+              <div class="input-group input-group-sm has-validation">
+                <select
+                  class="form-control form-control-sm input-box"
+                  id="password"
+                  name="password"
+                  formControlName="password"
+                >
+                  <option value="owner">Owner</option>
+                  <option value="user">User</option>
+                </select>
+                <!-- <input
+                 
+                  id="password"
+                  name="password"
+                  placeholder="Enter password"
+                  formControlName="password"
+                  required
+                  [readOnly]="access"
+                  minlength="6"
+                  class="form-control form-control-sm input-box"
+                  [class.is-invalid]="
+                    password.invalid && (password.dirty || password.touched)
+                  "
+                /> -->
+                <!-- <button
+                  type="button"
+                  class="btn btn-outline-secondary"
+                  (click)="user.showPassword = !user.showPassword"
+                >
+                  <i
+                    class="bi"
+                    [ngClass]="{
+                      'bi-eye-fill': !user.showPassword,
+                      'bi-eye-slash-fill': user.showPassword
+                    }"
+                  ></i>
+                </button> -->
+                <div
+                  *ngIf="
+                    password.invalid && (password.dirty || password.touched)
+                  "
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="password.errors?.['required']">
+                    This field is required.
+                  </div>
+                  <div *ngIf="password.errors?.['minlength']">
+                    This field must have at least 06 characters.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="d-flex justify-content-evenly"
+            style="margin-bottom: 90px"
+          >
+            <button
+              class="btn btn-success"
+              type="submit"
+              [disabled]="access"
+              [ngClass]="{ disabled: access }"
+            >
+              Register
+            </button>
+
+            <span class="btn btn-primary" (click)="modify()">Modify</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="login"
+  *ngIf="!this.userservice.isloggedIn()"
+  style="margin-top: 100px; text-align: center"
+>
+  please login,<button class="btn btn-primary" (click)="showlogin()">
+    Login
+  </button>
+</div>
+<app-footer></app-footer>

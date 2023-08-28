@@ -1,0 +1,97 @@
+<nav
+  class="navbar navbar-expand-lg navbar-dark p-0"
+  style="position: fixed; z-index: 5; width: 100%; background: #eceef5"
+>
+  <div class="d-flex w-100 m-0 p-0" style="justify-content: space-between">
+    <!-- Logo -->
+    <a class="navbar-brand m-0 text-center" href="#">
+      <img
+        width="63px"
+        src="/assets/images/RENT_VILLE.png"
+        class="h-8 logo"
+        alt="..."
+      />
+      <span style="color: black">Rent Villa</span>
+    </a>
+    <!-- Navbar toggle -->
+    <i
+      class="bi bi-list"
+      style="color: black; font-size: 41px; align-items: center"
+      (click)="menuclick()"
+    ></i>
+    <!-- <div style="display: flex">
+      111111111 -->
+    <!-- <div class="filters">
+      <span
+        ><span class="HSH">Home</span><span class="HSH">Sweet</span
+        ><span class="HSH">Home</span></span
+      >
+    </div> -->
+    <div
+      class="collapse navbar-collapse"
+      id="navbarCollapse"
+      style="padding-left: 10px; padding-right: 10px; justify-content: end"
+    >
+      <!-- box-shadow: 8px -2px 9px; -->
+      <div
+        style="display: flex; justify-content: flex-end; margin-bottom: 1rem"
+      >
+        <div class="filter-1 p-0" (click)="showDropDown1 = !showDropDown1">
+          <div style="display: flex; flex-direction: row">
+            <img
+              src="assets/images/user.png"
+              alt="tag"
+              class="d-block w-80 img-fluid"
+              style="
+                width: 100%;
+                border-radius: 10px;
+                height: 45px;
+                margin-top: 9px;
+              "
+            />
+            <i
+              class="bi-caret-down-fill"
+              style="margin-top: 22px; margin-left: 7px"
+            ></i>
+          </div>
+
+          <div
+            class="drop-show-1"
+            style="width: max-content; right: 0%; padding: 10px"
+          >
+            <div *ngIf="!this.userservice.isloggedIn()">
+              <div class="navbar-nav m-0">
+                <button class="btn btn-light" (click)="Openlogin()">
+                  <i
+                    class="bi bi-box-arrow-in-right"
+                    style="margin-right: 5px"
+                  ></i
+                  >Login
+                </button>
+              </div>
+              <div class="navbar-nav m-0">
+                <button class="btn btn-light" (click)="Openregister()">
+                  <i class="bi bi-journal-plus" style="margin-right: 5px"></i
+                  >Register
+                </button>
+              </div>
+            </div>
+            <div *ngIf="this.userservice.isloggedIn()">
+              <div class="navbar-nav ms-lg-4">
+                <button class="btn btn-light" routerLink="/myprofile">
+                  My Profile
+                </button>
+              </div>
+              <div class="navbar-nav ms-lg-4">
+                <button class="btn btn-light" (click)="logout()">
+                  Log out
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- </div> -->
+  </div>
+</nav>

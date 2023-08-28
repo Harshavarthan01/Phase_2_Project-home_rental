@@ -1,0 +1,131 @@
+<app-login *ngIf="this.tempservice.showlogin"></app-login>
+<app-register *ngIf="this.tempservice.showregister"></app-register>
+<app-togglemenu *ngIf="this.tempservice.showmenu"></app-togglemenu>
+<div class="d-flex flex-column" style="font-family: system-ui">
+  <app-header></app-header>
+  <div class="row flex-nowrap" style="margin: 73px 0 0 0">
+    <app-leftpanel
+      *ngIf="this.tempservice.width > 992"
+      style="width: 19.5%; position: fixed; padding: 0"
+    ></app-leftpanel>
+
+    <div class="right-area">
+      <diV class="row" style="width: 100%; margin: 0; margin-top: 2rem">
+        <img
+          src="/assets/house_images/frontview_{{
+            this.propertydetails.propertyId
+          }}.png"
+          alt="tag"
+          class="d-block w-80 img-fluid image-1"
+        />
+        <div style="width: 30%; padding-left: 0; padding-right: 0">
+          <img
+            src="/assets/house_images/interior_{{
+              this.propertydetails.propertyId
+            }}.png"
+            alt="tag"
+            class="img-property img-fluid"
+          />
+          <img
+            src="/assets/house_images/sideview_{{
+              this.propertydetails.propertyId
+            }}.png"
+            alt="tag"
+            class="img-property img-fluid"
+          />
+        </div>
+      </diV>
+      <div class="details">
+        <div class="left-box">
+          <div class="d-flex justify-content-between">
+            <h2>{{ this.propertydetails.propertyName }}</h2>
+            <button
+              class="btn btn-info"
+              style="
+                height: 31px;
+                padding: 0px 10px;
+                background: blue;
+                color: white;
+              "
+              (click)="addwishlist(this.propertydetails.propertyId)"
+            >
+              <i class="bi bi-house-heart-fill"></i>
+              Add wishlist
+            </button>
+          </div>
+          <span class="property-type-span">it is a private property</span>
+          <div class="property-specification">
+            <span class="icon-img"
+              ><img
+                style="width: 27px; padding: 5px; background: #f3f2ee"
+                src="assets/images/icons8-bed-50.png"
+                alt="tag"
+                class="img-fluid"
+              /><span>{{ propertydetails.numberOfBhk }} bedrooms</span></span
+            >
+            <span class="icon-img"
+              ><img
+                style="width: 27px; padding: 5px; background: #f3f2ee"
+                src="assets/images/icons8-floors-50.png"
+                alt="tag"
+                class="img-fluid"
+              /><span>{{ propertydetails.numberOfFloor }} floor</span></span
+            >
+            <span class="icon-img"
+              ><img
+                style="width: 27px; padding: 5px; background: #f3f2ee"
+                src="assets/images/icons8-closet-32.png"
+                alt="tag"
+                class="img-fluid"
+              /><span>{{ propertydetails.furnishedStatus }}</span></span
+            >
+          </div>
+          <h4 class="mb-1" style="font-weight: 500; margin-top: 1rem">
+            Overview
+          </h4>
+          <span class="overview"> {{ propertydetails.description }}</span>
+        </div>
+        <div class="right-box">
+          <div class="owner-details">
+            <div class="inner-ownerdetails">
+              <h2 style="font-size: 27px">
+                <i class="bi bi-currency-rupee"></i>
+                {{ propertydetails.rentAmount }}
+                <span style="font-size: small; font-weight: 400">/month</span>
+              </h2>
+              <i class="bi-heart" style="margin-right: 10px"></i>
+            </div>
+            <div class="specifications">
+              <span style="opacity: 0.7">Owner name :</span>
+              <span style="padding-right: 15px">{{
+                propertydetails.userName
+              }}</span>
+            </div>
+
+            <div class="specifications">
+              <span style="opacity: 0.7">Location :</span>
+              <span style="padding-right: 15px">{{
+                propertydetails.city
+              }}</span>
+            </div>
+
+            <div class="specifications">
+              <span style="opacity: 0.7">phone no :</span>
+              <span
+                *ngIf="!this.userservice.isloggedIn()"
+                style="padding-right: 15px"
+                >Login to view
+              </span>
+              <span
+                *ngIf="this.userservice.isloggedIn()"
+                style="padding-right: 15px"
+                >{{ propertydetails.phone }}</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer *ngIf="this.tempservice.showfooter"></app-footer>
+</div>

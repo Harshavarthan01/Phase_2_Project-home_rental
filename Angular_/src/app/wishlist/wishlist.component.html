@@ -1,0 +1,89 @@
+<app-login *ngIf="this.tempservice.showlogin"></app-login>
+<app-register *ngIf="this.tempservice.showregister"></app-register>
+<app-togglemenu *ngIf="this.tempservice.showmenu"></app-togglemenu>
+<div class="d-flex flex-column" style="font-family: system-ui">
+  <app-header></app-header>
+  <div class="row flex-nowrap" style="margin: 73px 0 0 0">
+    <app-leftpanel
+      style="width: 19.5%; position: fixed; padding: 0"
+    ></app-leftpanel>
+
+    <div class="right-area">
+      <div><h1>Wishlist</h1></div>
+      <div class="row mt-2" style="justify-content: space-evenly">
+        <div
+          *ngFor="
+            let items of propertydetails
+              | paginate : { itemsPerPage: 3, currentPage: page };
+            let ndx = index
+          "
+          class="card"
+        >
+          <img
+            class="card-img-top mt-2"
+            src="/assets/images/h-1.jpg"
+            alt="Card image"
+            style="width: 100%"
+          />
+          <div class="card-body">
+            <h4 class="card-title">{{ items.propertyName }}</h4>
+            <p class="card-text">
+              Rent :
+              <span style="font-size: 20px; font-weight: 500">{{
+                items.rentAmount
+              }}</span
+              >/-
+            </p>
+            <div class="d-flex justify-content-between">
+              <button
+                class="btn btn-primary"
+                style="background: blue; width: 120px"
+                (click)="clickproperty()"
+              >
+                See Property
+              </button>
+              <button
+                class="btn btn-danger"
+                style="background: red; width: 120px"
+                (click)="removeproperty(items.propertyId)"
+              >
+                Remove
+              </button>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="propertydetails.length == 0" class="notfound">
+          <h1
+            style="
+              font-size: 38px;
+              font-weight: 500;
+              text-align: center;
+              line-height: 52px;
+            "
+          >
+            <i class="bi bi-emoji-frown" style="margin-right: 10px"></i>"No
+            property Found"
+          </h1>
+        </div>
+      </div>
+      <div
+        *ngIf="propertydetails.length > 3"
+        style="
+          display: flex;
+          justify-content: end;
+          margin-top: 5px;
+          align-items: center;
+        "
+      >
+        <pagination-controls
+          style="margin: 0 !important"
+          previousLabel="Prev"
+          nextLabel="Next"
+          (pageChange)="listCount($event)"
+          (pageChange)="page = $event"
+        ></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

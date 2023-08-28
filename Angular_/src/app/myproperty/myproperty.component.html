@@ -1,0 +1,88 @@
+<app-togglemenu *ngIf="this.tempservice.showmenu"></app-togglemenu>
+<div
+  *ngIf="this.userservice.isloggedIn()"
+  class="d-flex flex-column"
+  style="font-family: system-ui"
+>
+  <app-header></app-header>
+
+  <div class="row flex-nowrap" style="margin: 73px 0 0 0">
+    <app-leftpanel
+      *ngIf="this.tempservice.width > 992"
+      style="width: 19.5%; position: fixed; padding: 0"
+    ></app-leftpanel>
+    <div class="right-area">
+      <!-- ---------------------------------------------------------------------------------------------------------------- -->
+      <div><h1>My Property</h1></div>
+      <div class="w-100 d-flex justify-content-end mb-4">
+        <button class="btnn" routerLink="/addproperty">Add Property</button>
+      </div>
+      <div class="row mt-2" style="justify-content: space-evenly">
+        <div
+          *ngFor="
+            let items of propertydetails
+              | paginate : { itemsPerPage: 3, currentPage: page };
+            let ndx = index
+          "
+          class="card"
+        >
+          <img
+            class="card-img-top mt-2"
+            src="/assets/house_images/frontview_{{ items.propertyId }}.png"
+            alt="Card image"
+            style="width: 100%; height: 200px"
+          />
+          <div class="card-body">
+            <h4 class="card-title">{{ items.propertyName }}</h4>
+            <p class="card-text">
+              Rent :
+              <span style="font-size: 20px; font-weight: 500">{{
+                items.rentAmount
+              }}</span
+              >/-
+            </p>
+            <div class="d-flex justify-content-between">
+              <a
+                class="btn btn-primary"
+                style="background: blue; width: 120px"
+                (click)="clickproperty(items)"
+                >See Property</a
+              >
+              <a
+                class="btn btn-danger"
+                style="background: red; width: 120px"
+                (click)="Removeproperty(items.propertyId)"
+                >Delete</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="propertydetails.length == 0" class="notfound">
+        <h1 style="font-size: 38px; font-weight: 500">
+          <i class="bi bi-emoji-frown" style="margin-right: 10px"></i>"No
+          property Found"
+        </h1>
+      </div>
+      <div
+        *ngIf="propertydetails.length > 3"
+        style="
+          display: flex;
+          justify-content: end;
+          margin-top: 5px;
+          align-items: center;
+        "
+      >
+        <pagination-controls
+          style="margin: 0 !important"
+          previousLabel="Back"
+          nextLabel="Next"
+          currentPage="2"
+          (pageChange)="listCount($event)"
+          (pageChange)="page = $event"
+        ></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer *ngIf="this.tempservice.width < 431"></app-footer>

@@ -1,0 +1,520 @@
+<app-togglemenu *ngIf="this.tempservice.showmenu"></app-togglemenu>
+<div class="d-flex flex-column" style="font-family: system-ui">
+  <!-- <nav class="navbar navbar-expand-lg navbar-dark p-0">
+    <div
+      class="d-flex w-100 m-0 p-0"
+      style="justify-content: space-between; background: #eceef5"
+    >
+      <a class="navbar-brand m-0 text-center" href="#">
+        <img
+          width="77px"
+          src="assets/images/logo.png"
+          class="h-8 logo"
+          alt="..."
+        />
+        <span style="color: black">Rent Villa</span>
+      </a>
+      <div class="d-flex align-items-center mx-3">
+        <i
+          class="bi bi-list"
+          style="color: black; font-size: 41px"
+          (click)="menuclick()"
+        ></i>
+        <img
+          src="assets/images/user.png"
+          alt="tag"
+          class="d-block w-80 img-fluid"
+          style="height: 62px; width: 100%; border-radius: 10px"
+        />
+        <i class="bi-caret-down-fill m-2"></i>
+      </div>
+    </div>
+  </nav> -->
+  <app-header></app-header>
+  <div class="row flex-nowrap" style="margin: 73px 0 0 0">
+    <!-- <div class="leftarea">
+      <div class="leftarea-options">
+        <div class="d-flex flex-column w-100">
+          <span class="icons" routerLink="/"
+            ><i class="bi bi-house" style="margin-right: 6px"></i
+            ><span>Home</span></span
+          >
+          <span class="icons"
+            ><i class="bi bi-heart" style="margin-right: 6px"></i
+            ><span>Wishlist</span></span
+          >
+          <span class="icons" routerLink="/myproperty"
+            ><i class="bi bi-houses" style="margin-right: 6px"></i
+            ><span>Myproperty</span></span
+          >
+          <span class="icons"
+            ><i class="bi bi-question-circle" style="margin-right: 6px"></i
+            ><span>Help</span></span
+          >
+          <span class="icons"
+            ><i class="bi bi-people" style="margin-right: 6px"></i
+            ><span>About us</span></span
+          >
+        </div>
+      </div>
+      <div style="padding: 35px">
+        <img
+          src="assets/images/no1.jpeg"
+          alt="tag"
+          class="d-block w-80 img-fluid"
+          style="height: 300px; width: 100%; border-radius: 10px"
+        />
+      </div>
+    </div> -->
+    <app-leftpanel
+      *ngIf="this.tempservice.width > 992"
+      style="width: 19.5%; position: fixed; padding: 0"
+    ></app-leftpanel>
+
+    <form
+      class="right-area col-12"
+      [formGroup]="registerForm"
+      #form="ngForm"
+      (ngSubmit)="submited()"
+    >
+      <div style="margin-top: 35px">
+        <h1 style="font-size: 33px; font-weight: 500; margin: 0 0 16px 16px">
+          Add Property
+        </h1>
+      </div>
+      <div class="d-flex justify-content-around flex-wrap col-12">
+        <div class="inner-login-right">
+          <label style="opacity: 0.9; margin-bottom: 3px"
+            >Property name<span style="color: red">*</span></label
+          >
+          <div class="input-group input-group-sm has-validation">
+            <input
+              style="max-width: 340px"
+              id="propertyname"
+              name="propertyname"
+              placeholder="Enter propertyname"
+              formControlName="propertyname"
+              required
+              minlength="1"
+              class="form-control form-control-sm input-box"
+              [class.is-invalid]="
+                propertyname.invalid &&
+                (propertyname.dirty || propertyname.touched)
+              "
+            />
+
+            <div
+              *ngIf="
+                propertyname.invalid &&
+                (propertyname.dirty || propertyname.touched)
+              "
+              class="invalid-feedback"
+            >
+              <div *ngIf="propertyname.errors?.['required']">
+                This field is required.
+              </div>
+              <div *ngIf="propertyname.errors?.['minlength']">
+                This field must have at least 1 characters.
+              </div>
+            </div>
+          </div>
+          <!-- <input
+            type="text"
+            class="input-box"
+            placeholder="Enter property name"
+            id="formGroupExampleInput"
+            name="propertyname"
+            formControlName="propertyname"
+
+          />-->
+        </div>
+        <div class="inner-login-right">
+          <label style="opacity: 0.9; margin-bottom: 3px"
+            >Address<span style="color: red">*</span></label
+          >
+          <div class="input-group input-group-sm has-validation">
+            <input
+              id="address"
+              name="address"
+              placeholder="Enter address"
+              formControlName="address"
+              required
+              minlength="1"
+              class="form-control form-control-sm input-box"
+              [class.is-invalid]="
+                address.invalid && (address.dirty || address.touched)
+              "
+            />
+
+            <div
+              *ngIf="address.invalid && (address.dirty || address.touched)"
+              class="invalid-feedback"
+            >
+              <div *ngIf="address.errors?.['required']">
+                This field is required.
+              </div>
+              <div *ngIf="address.errors?.['minlength']">
+                This field must have at least 1 characters.
+              </div>
+            </div>
+          </div>
+          <!-- <input
+            type="text"
+            class="input-box"
+            placeholder="Enter address"
+            id="formGroupExampleInput"
+            name="address"
+            formControlName="address"
+          /> -->
+        </div>
+      </div>
+      <div class="d-flex justify-content-around flex-wrap col-12">
+        <div class="inner-login-right my-4">
+          <label style="opacity: 0.9; margin-bottom: 3px"
+            >City<span style="color: red">*</span></label
+          >
+          <div class="input-group input-group-sm has-validation">
+            <input
+              id="city"
+              name="city"
+              placeholder="Enter city"
+              formControlName="city"
+              required
+              minlength="1"
+              class="form-control form-control-sm input-box"
+              [class.is-invalid]="city.invalid && (city.dirty || city.touched)"
+            />
+
+            <div
+              *ngIf="city.invalid && (city.dirty || city.touched)"
+              class="invalid-feedback"
+            >
+              <div *ngIf="city.errors?.['required']">
+                This field is required.
+              </div>
+              <div *ngIf="city.errors?.['minlength']">
+                This field must have at least 1 characters.
+              </div>
+            </div>
+          </div>
+          <!-- <input
+            type="text"
+            class="input-box"
+            placeholder="Enter city"
+            id="formGroupExampleInput"
+            name="city"
+            formControlName="City"
+          /> -->
+        </div>
+        <div class="inner-login-right my-4">
+          <label style="opacity: 0.9; margin-bottom: 3px"
+            >Pincode<span style="color: red">*</span></label
+          >
+          <div class="input-group input-group-sm has-validation">
+            <input
+              id="pincode"
+              name="pincode"
+              placeholder="Enter pincode"
+              formControlName="pincode"
+              required
+              minlength="1"
+              class="form-control form-control-sm input-box"
+              [class.is-invalid]="
+                pincode.invalid && (pincode.dirty || pincode.touched)
+              "
+            />
+
+            <div
+              *ngIf="pincode.invalid && (pincode.dirty || pincode.touched)"
+              class="invalid-feedback"
+            >
+              <div *ngIf="pincode.errors?.['required']">
+                This field is required.
+              </div>
+              <div *ngIf="pincode.errors?.['minlength']">
+                This field must have at least 1 characters.
+              </div>
+            </div>
+          </div>
+          <!-- <input
+            type="text"
+            class="form-control input-box"
+            placeholder="Enter pincode"
+            id="formGroupExampleInput"
+            name="pincode"
+            formControlName="pincode"
+          /> -->
+        </div>
+      </div>
+      <div class="d-flex justify-content-around flex-wrap col-12">
+        <div class="inner-login-right my-4">
+          <label style="opacity: 0.9; margin-bottom: 3px"
+            >Description<span style="color: red">*</span></label
+          >
+          <div class="input-group input-group-sm has-validation">
+            <input
+              id="description"
+              name="description"
+              placeholder="Enter description"
+              formControlName="description"
+              required
+              minlength="1"
+              class="form-control form-control-sm input-box"
+              [class.is-invalid]="
+                description.invalid &&
+                (description.dirty || description.touched)
+              "
+            />
+
+            <div
+              *ngIf="
+                description.invalid &&
+                (description.dirty || description.touched)
+              "
+              class="invalid-feedback"
+            >
+              <div *ngIf="description.errors?.['required']">
+                This field is required.
+              </div>
+              <div *ngIf="description.errors?.['minlength']">
+                This field must have at least 1 characters.
+              </div>
+            </div>
+          </div>
+          <!-- <input
+            type="text"
+            class="input-box"
+            placeholder="Enter description"
+            id="formGroupExampleInput"
+            name="description"
+            formControlName="description"
+          /> -->
+        </div>
+        <div class="inner-login-right my-4">
+          <label style="opacity: 0.9; margin-bottom: 3px"
+            >Rent amount<span style="color: red">*</span></label
+          >
+          <div class="input-group input-group-sm has-validation">
+            <input
+              id="rent"
+              name="rent"
+              placeholder="Enter rent"
+              formControlName="rent"
+              required
+              minlength="1"
+              class="form-control form-control-sm input-box"
+              [class.is-invalid]="rent.invalid && (rent.dirty || rent.touched)"
+            />
+
+            <div
+              *ngIf="rent.invalid && (rent.dirty || rent.touched)"
+              class="invalid-feedback"
+            >
+              <div *ngIf="rent.errors?.['required']">
+                This field is required.
+              </div>
+              <div *ngIf="rent.errors?.['minlength']">
+                This field must have at least 1 characters.
+              </div>
+            </div>
+          </div>
+          <!-- <input
+            type="text"
+            class="input-box"
+            placeholder="Enter rent"
+            id="formGroupExampleInput"
+            name="rent"
+            formControlName="Rent"
+          /> -->
+        </div>
+      </div>
+      <div class="d-flex justify-content-around flex-wrap col-12">
+        <div class="inner-login-right my-4">
+          <label style="opacity: 0.9; margin-bottom: 3px"
+            >No of BHK<span style="color: red">*</span></label
+          >
+          <div class="input-group input-group-sm has-validation">
+            <input
+              id="bhk"
+              name="bhk"
+              placeholder="Enter no of bhk"
+              formControlName="bhk"
+              required
+              minlength="1"
+              class="form-control form-control-sm input-box"
+              [class.is-invalid]="bhk.invalid && (bhk.dirty || bhk.touched)"
+            />
+
+            <div
+              *ngIf="bhk.invalid && (bhk.dirty || bhk.touched)"
+              class="invalid-feedback"
+            >
+              <div *ngIf="bhk.errors?.['required']">
+                This field is required.
+              </div>
+              <div *ngIf="bhk.errors?.['minlength']">
+                This field must have at least 1 characters.
+              </div>
+            </div>
+          </div>
+          <!-- <input
+            type="text"
+            class="input-box"
+            placeholder="Enter number of bhk"
+            id="formGroupExampleInput"
+            name="bhk"
+            formControlName="Bhk"
+          /> -->
+        </div>
+        <div class="inner-login-right my-4">
+          <label style="opacity: 0.9; margin-bottom: 3px"
+            >No of floors<span style="color: red">*</span></label
+          >
+          <div class="input-group input-group-sm has-validation">
+            <input
+              id="floors"
+              name="floors"
+              placeholder="Enter no of floors"
+              formControlName="floors"
+              required
+              minlength="1"
+              class="form-control form-control-sm input-box"
+              [class.is-invalid]="
+                floors.invalid && (floors.dirty || floors.touched)
+              "
+            />
+
+            <div
+              *ngIf="floors.invalid && (floors.dirty || floors.touched)"
+              class="invalid-feedback"
+            >
+              <div *ngIf="floors.errors?.['required']">
+                This field is required.
+              </div>
+              <div *ngIf="floors.errors?.['minlength']">
+                This field must have at least 1 characters.
+              </div>
+            </div>
+          </div>
+          <!-- <input
+            type="text"
+            class="input-box"
+            placeholder="Enter number of floors"
+            id="formGroupExampleInput"
+            name="floors"
+            formControlName="Floors"
+          /> -->
+        </div>
+      </div>
+      <div class="d-flex justify-content-around flex-wrap col-12">
+        <div class="inner-login-right my-4">
+          <label style="opacity: 0.9; margin-bottom: 3px"
+            >Furnished Status<span style="color: red">*</span></label
+          >
+          <div class="input-group input-group-sm has-validation">
+            <input
+              id="furnished"
+              name="furnished"
+              placeholder="Enter no of furnished"
+              formControlName="furnished"
+              required
+              minlength="1"
+              class="form-control form-control-sm input-box"
+              [class.is-invalid]="
+                furnished.invalid && (furnished.dirty || furnished.touched)
+              "
+            />
+
+            <div
+              *ngIf="
+                furnished.invalid && (furnished.dirty || furnished.touched)
+              "
+              class="invalid-feedback"
+            >
+              <div *ngIf="furnished.errors?.['required']">
+                This field is required.
+              </div>
+              <div *ngIf="furnished.errors?.['minlength']">
+                This field must have at least 1 characters.
+              </div>
+            </div>
+          </div>
+          <!-- <input
+            type="text"
+            class="input-box"
+            placeholder="Enter furnished status"
+            id="formGroupExampleInput"
+            name="furnished"
+            formControlName="Furnished"
+          /> -->
+        </div>
+        <div class="inner-login-right my-4">
+          <label style="opacity: 0.9; margin-bottom: 3px"
+            >Frontview image<span style="color: red">*</span></label
+          >
+          <input
+            type="file"
+            class="input-box"
+            placeholder="+ upload image"
+            id="formGroupExampleInput"
+            name="image"
+            (change)="onImageSelected($event)"
+          />
+        </div>
+        <!-- formControlName="Image" -->
+      </div>
+      <div class="d-flex justify-content-around flex-wrap col-12">
+        <div class="inner-login-right my-4">
+          <label style="opacity: 0.9; margin-bottom: 3px"
+            >Sideview image<span style="color: red">*</span></label
+          >
+          <input
+            type="file"
+            class="input-box"
+            placeholder="+ upload image"
+            id="formGroupExampleInput"
+            name="image1"
+            (change)="onImage1Selected($event)"
+          />
+        </div>
+        <div class="inner-login-right my-4">
+          <label style="opacity: 0.9; margin-bottom: 3px"
+            >Backview image<span style="color: red">*</span></label
+          >
+          <input
+            type="file"
+            class="input-box"
+            placeholder="+ upload image"
+            id="formGroupExampleInput"
+            name="image2"
+            (change)="onImage2Selected($event)"
+          />
+        </div>
+        <!-- formControlName="Image" -->
+      </div>
+      <div
+        class="d-flex justify-content-center flex-wrap col-12"
+        style="column-gap: 5px; margin-bottom: 46px"
+      >
+        <div class="inner-login-right col-4 my-4">
+          <span
+            class="login-btn"
+            style="
+              background: #cdced3;
+              color: #1d1e1f;
+              border: 1px solid grey;
+              text-align: center;
+            "
+            (click)="Reset()"
+          >
+            Clear
+          </span>
+        </div>
+        <div class="inner-login-right col-4 my-4">
+          <button class="login-btn" type="submit">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<app-footer *ngIf="this.tempservice.width < 431"></app-footer>

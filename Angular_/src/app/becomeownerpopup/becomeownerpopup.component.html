@@ -1,0 +1,49 @@
+<div class="popup-bg">
+    <div
+      id="popup"
+      style="box-shadow: #000 0px 0px 15px; font-family: Roboto; padding: 6px"
+    >
+      <div
+        style="
+          display: flex;
+  
+          justify-content: space-between;
+          width: 100%;
+        "
+      >
+        <span
+          class="de"
+          style="
+            padding: 5px;
+            font-size: 17px;
+            font-weight: 500;
+            letter-spacing: 0.1px;
+          "
+          >Confirmation</span
+        >
+  
+        <i
+          class="bi bi-x-circle"
+          (click)="Close()"
+          style="
+            font-size: large;
+            margin-right: 5px;
+            cursor: pointer;
+            border-radius: 50%;
+          "
+        ></i>
+      </div>
+      <hr
+        style="border: solid black; width: 100%; border-width: thin; margin: 0px"
+      />
+      <div style="padding: 10px 8px 6px 20px; color: black">
+        <span style="font-size: 16px; font-weight: 400; padding: 20px"
+          >Are you sure want to become an Owner?</span
+        >
+        <div style="display: flex; justify-content: flex-end; margin-top: 10px">
+          <button class="buttoncancel" (click)="cancelowner()">cancel</button>
+          <button class="buttonconfirm" (click)="confirmowner()">confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
