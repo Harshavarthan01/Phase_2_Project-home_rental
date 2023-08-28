@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: system-ui;
+}
+
+/* @media only screen and (max-width: 430px) {
+    footer {
+        display: flex;
+      }
+}
+
+footer {
+    width: 100%;
+    display: none;
+    position: fixed;
+    flex-direction: row;
+    z-index: 2;
+    flex-direction: row;
+    vertical-align: baseline;
+    height: 56px;
+    background: #e4dfdf;
+    justify-content: space-evenly;
+    bottom: 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  } */
